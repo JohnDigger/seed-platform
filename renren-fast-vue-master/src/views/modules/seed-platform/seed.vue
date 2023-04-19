@@ -26,37 +26,37 @@
         prop="seedId"
         header-align="center"
         align="center"
-        label="">
+        label="种子id">
       </el-table-column>
       <el-table-column
         prop="seedName"
         header-align="center"
         align="center"
-        label="">
+        label="种子名称">
       </el-table-column>
       <el-table-column
         prop="description"
         header-align="center"
         align="center"
-        label="">
+        label="种子描述">
       </el-table-column>
       <el-table-column
         prop="origin"
         header-align="center"
         align="center"
-        label="">
+        label="种子来源">
       </el-table-column>
       <el-table-column
         prop="traceCode"
         header-align="center"
         align="center"
-        label="">
+        label="溯源二维码">
       </el-table-column>
       <el-table-column
         prop="createdAt"
         header-align="center"
         align="center"
-        label="">
+        label="创建时间">
       </el-table-column>
       <el-table-column
         fixed="right"

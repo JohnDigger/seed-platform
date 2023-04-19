@@ -4,20 +4,20 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="" prop="seedName">
-      <el-input v-model="dataForm.seedName" placeholder=""></el-input>
+    <el-form-item label="种子名称" prop="seedName">
+      <el-input v-model="dataForm.seedName" placeholder="种子名称"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="description">
-      <el-input v-model="dataForm.description" placeholder=""></el-input>
+    <el-form-item label="种子描述" prop="description">
+      <el-input v-model="dataForm.description" placeholder="种子描述"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="origin">
-      <el-input v-model="dataForm.origin" placeholder=""></el-input>
+    <el-form-item label="种子来源" prop="origin">
+      <el-input v-model="dataForm.origin" placeholder="种子来源"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="traceCode">
-      <el-input v-model="dataForm.traceCode" placeholder=""></el-input>
+    <el-form-item label="溯源二维码" prop="traceCode">
+      <el-input v-model="dataForm.traceCode" placeholder="溯源二维码"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="createdAt">
-      <el-input v-model="dataForm.createdAt" placeholder=""></el-input>
+    <el-form-item label="创建时间" prop="createdAt">
+      <el-input v-model="dataForm.createdAt" placeholder="创建时间"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -42,19 +42,19 @@
         },
         dataRule: {
           seedName: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '种子名称不能为空', trigger: 'blur' }
           ],
           description: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '种子描述不能为空', trigger: 'blur' }
           ],
           origin: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '种子来源不能为空', trigger: 'blur' }
           ],
           traceCode: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '溯源二维码不能为空', trigger: 'blur' }
           ],
           createdAt: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '创建时间不能为空', trigger: 'blur' }
           ]
         }
       }

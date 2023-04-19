@@ -4,17 +4,17 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="" prop="username">
-      <el-input v-model="dataForm.username" placeholder=""></el-input>
+    <el-form-item label="消费者用户名" prop="username">
+      <el-input v-model="dataForm.username" placeholder="消费者用户名"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="password">
-      <el-input v-model="dataForm.password" placeholder=""></el-input>
+    <el-form-item label="消费者密码" prop="password">
+      <el-input v-model="dataForm.password" placeholder="消费者密码"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="email">
-      <el-input v-model="dataForm.email" placeholder=""></el-input>
+    <el-form-item label="消费者邮箱" prop="email">
+      <el-input v-model="dataForm.email" placeholder="消费者邮箱"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="createdAt">
-      <el-input v-model="dataForm.createdAt" placeholder=""></el-input>
+    <el-form-item label="创建时间" prop="createdAt">
+      <el-input v-model="dataForm.createdAt" placeholder="创建时间"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -38,16 +38,16 @@
         },
         dataRule: {
           username: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '消费者用户名不能为空', trigger: 'blur' }
           ],
           password: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '消费者密码不能为空', trigger: 'blur' }
           ],
           email: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '消费者邮箱不能为空', trigger: 'blur' }
           ],
           createdAt: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '创建时间不能为空', trigger: 'blur' }
           ]
         }
       }

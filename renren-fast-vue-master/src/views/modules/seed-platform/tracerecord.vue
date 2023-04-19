@@ -26,37 +26,37 @@
         prop="recordId"
         header-align="center"
         align="center"
-        label="">
+        label="溯源id">
       </el-table-column>
       <el-table-column
         prop="seedId"
         header-align="center"
         align="center"
-        label="">
+        label="种子id">
       </el-table-column>
       <el-table-column
         prop="traceDate"
         header-align="center"
         align="center"
-        label="">
+        label="溯源时间">
       </el-table-column>
       <el-table-column
         prop="traceInfo"
         header-align="center"
         align="center"
-        label="">
+        label="溯源信息表">
       </el-table-column>
       <el-table-column
         prop="tracePerson"
         header-align="center"
         align="center"
-        label="">
+        label="溯源描述">
       </el-table-column>
       <el-table-column
         prop="createdAt"
         header-align="center"
         align="center"
-        label="">
+        label="溯源创建时间">
       </el-table-column>
       <el-table-column
         fixed="right"

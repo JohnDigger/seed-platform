@@ -4,20 +4,20 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="" prop="seedId">
-      <el-input v-model="dataForm.seedId" placeholder=""></el-input>
+    <el-form-item label="种子id" prop="seedId">
+      <el-input v-model="dataForm.seedId" placeholder="种子id"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="traceDate">
-      <el-input v-model="dataForm.traceDate" placeholder=""></el-input>
+    <el-form-item label="溯源时间" prop="traceDate">
+      <el-input v-model="dataForm.traceDate" placeholder="溯源时间"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="traceInfo">
-      <el-input v-model="dataForm.traceInfo" placeholder=""></el-input>
+    <el-form-item label="溯源信息表" prop="traceInfo">
+      <el-input v-model="dataForm.traceInfo" placeholder="溯源信息表"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="tracePerson">
-      <el-input v-model="dataForm.tracePerson" placeholder=""></el-input>
+    <el-form-item label="溯源描述" prop="tracePerson">
+      <el-input v-model="dataForm.tracePerson" placeholder="溯源描述"></el-input>
     </el-form-item>
-    <el-form-item label="" prop="createdAt">
-      <el-input v-model="dataForm.createdAt" placeholder=""></el-input>
+    <el-form-item label="溯源创建时间" prop="createdAt">
+      <el-input v-model="dataForm.createdAt" placeholder="溯源创建时间"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -42,19 +42,19 @@
         },
         dataRule: {
           seedId: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '种子id不能为空', trigger: 'blur' }
           ],
           traceDate: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '溯源时间不能为空', trigger: 'blur' }
           ],
           traceInfo: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '溯源信息表不能为空', trigger: 'blur' }
           ],
           tracePerson: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '溯源描述不能为空', trigger: 'blur' }
           ],
           createdAt: [
-            { required: true, message: '不能为空', trigger: 'blur' }
+            { required: true, message: '溯源创建时间不能为空', trigger: 'blur' }
           ]
         }
       }

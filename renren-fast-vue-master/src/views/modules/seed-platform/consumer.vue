@@ -26,31 +26,31 @@
         prop="consumerId"
         header-align="center"
         align="center"
-        label="">
+        label="消费者id">
       </el-table-column>
       <el-table-column
         prop="username"
         header-align="center"
         align="center"
-        label="">
+        label="消费者用户名">
       </el-table-column>
       <el-table-column
         prop="password"
         header-align="center"
         align="center"
-        label="">
+        label="消费者密码">
       </el-table-column>
       <el-table-column
         prop="email"
         header-align="center"
         align="center"
-        label="">
+        label="消费者邮箱">
       </el-table-column>
       <el-table-column
         prop="createdAt"
         header-align="center"
         align="center"
-        label="">
+        label="创建时间">
       </el-table-column>
       <el-table-column
         fixed="right"
