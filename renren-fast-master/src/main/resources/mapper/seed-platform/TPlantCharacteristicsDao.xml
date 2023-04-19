@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TPlantCharacteristicsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TPlantCharacteristicsEntity" id="tPlantCharacteristicsMap">
+        <result property="id" column="id"/>
+        <result property="plantHeight" column="plant_height"/>
+        <result property="leafShape" column="leaf_shape"/>
+        <result property="fruitSize" column="fruit_size"/>
+        <result property="fruitColor" column="fruit_color"/>
+        <result property="fruitProduction" column="fruit_production"/>
+        <result property="stressTolerance" column="stress_tolerance"/>
+        <result property="growCycle" column="grow_cycle"/>
+    </resultMap>
+
+
+</mapper>

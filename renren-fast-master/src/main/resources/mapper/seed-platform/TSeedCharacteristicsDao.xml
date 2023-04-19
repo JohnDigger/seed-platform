@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TSeedCharacteristicsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TSeedCharacteristicsEntity" id="tSeedCharacteristicsMap">
+        <result property="id" column="id"/>
+        <result property="seedSize" column="seed_size"/>
+        <result property="seedColor" column="seed_color"/>
+        <result property="seedShape" column="seed_shape"/>
+        <result property="seedWeight" column="seed_weight"/>
+        <result property="seedNutrient" column="seed_nutrient"/>
+        <result property="seedSurface" column="seed_surface"/>
+        <result property="seedHard" column="seed_hard"/>
+        <result property="seedWaterContent" column="seed_water_content"/>
+        <result property="seedGerminationRate" column="seed_germination_rate"/>
+        <result property="seedGrowthRate" column="seed_growth_rate"/>
+    </resultMap>
+
+
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TSeedGrowEnvironmentDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TSeedGrowEnvironmentEntity" id="tSeedGrowEnvironmentMap">
+        <result property="id" column="id"/>
+        <result property="growTemp" column="grow_temp"/>
+        <result property="growHumidity" column="grow_humidity"/>
+        <result property="growLight" column="grow_light"/>
+        <result property="growSoilPh" column="grow_soil_ph"/>
+        <result property="growSoilOrganicContent" column="grow_soil_organic_content"/>
+        <result property="growSoilQuality" column="grow_soil_quality"/>
+        <result property="growSoilNutrientContent" column="grow_soil_nutrient_content"/>
+    </resultMap>
+
+
+</mapper>
