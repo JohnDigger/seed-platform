@@ -17,7 +17,12 @@
       <el-input v-model="dataForm.traceCode" placeholder="溯源二维码"></el-input>
     </el-form-item>
     <el-form-item label="创建时间" prop="createdAt">
-      <el-input v-model="dataForm.createdAt" placeholder="创建时间"></el-input>
+<!--      <el-input v-model="dataForm.createdAt" placeholder="创建时间"></el-input>-->
+      <el-date-picker
+        v-model="dataForm.createdAt"
+        type="date"
+        placeholder="创建时间">
+      </el-date-picker>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">

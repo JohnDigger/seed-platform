@@ -4,11 +4,16 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
-    <el-form-item label="种子id" prop="seedId">
-      <el-input v-model="dataForm.seedId" placeholder="种子id"></el-input>
-    </el-form-item>
+<!--    <el-form-item label="种子id" prop="seedId">-->
+<!--      <el-input v-model="dataForm.seedId" placeholder="种子id"></el-input>-->
+<!--    </el-form-item>-->
     <el-form-item label="溯源时间" prop="traceDate">
-      <el-input v-model="dataForm.traceDate" placeholder="溯源时间"></el-input>
+<!--      <el-input v-model="dataForm.traceDate" placeholder="溯源时间"></el-input>-->
+      <el-date-picker
+        v-model="dataForm.traceDate"
+        type="date"
+        placeholder="溯源时间">
+      </el-date-picker>
     </el-form-item>
     <el-form-item label="溯源信息表" prop="traceInfo">
       <el-input v-model="dataForm.traceInfo" placeholder="溯源信息表"></el-input>
@@ -17,7 +22,12 @@
       <el-input v-model="dataForm.tracePerson" placeholder="溯源描述"></el-input>
     </el-form-item>
     <el-form-item label="溯源创建时间" prop="createdAt">
-      <el-input v-model="dataForm.createdAt" placeholder="溯源创建时间"></el-input>
+<!--      <el-input v-model="dataForm.createdAt" placeholder="溯源创建时间"></el-input>-->
+      <el-date-picker
+        v-model="dataForm.createdAt"
+        type="date"
+        placeholder="溯源创建时间">
+      </el-date-picker>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -39,6 +49,31 @@
           traceInfo: '',
           tracePerson: '',
           createdAt: ''
+        },
+        pickerOptions: {
+          disabledDate(time) {
+            return time.getTime() > Date.now();
+          },
+          shortcuts: [{
+            text: '今天',
+            onClick(picker) {
+              picker.$emit('pick', new Date());
+            }
+          }, {
+            text: '昨天',
+            onClick(picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24);
+              picker.$emit('pick', date);
+            }
+          }, {
+            text: '一周前',
+            onClick (picker) {
+              const date = new Date();
+              date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', date);
+            }
+          }]
         },
         dataRule: {
           seedId: [
