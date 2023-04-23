@@ -28,6 +28,14 @@
     <el-form-item label="种子蛋白质含量" prop="seedProteinContent">
       <el-input v-model="dataForm.seedProteinContent" placeholder="种子蛋白质含量"></el-input>
     </el-form-item>
+      <el-form-item label="创建日期" prop="seedGrowthRate">
+        <!--        <el-input v-model="dataForm.createTime" placeholder="创建日期"></el-input>-->
+        <el-date-picker
+          v-model="dataForm.createTime"
+          type="datetime"
+          placeholder="选择日期时间">
+        </el-date-picker>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="visible = false">取消</el-button>
@@ -76,6 +84,9 @@
           ],
           seedProteinContent: [
             { required: true, message: '种子蛋白质含量不能为空', trigger: 'blur' }
+          ],
+          createTime: [
+            { required: true, message: '创建日期不能为空', trigger: 'blur' }
           ]
         }
       }
@@ -101,6 +112,7 @@
                 this.dataForm.seedFatContent = data.tMatureSeedCharacteristics.seedFatContent
                 this.dataForm.seedStorageResistence = data.tMatureSeedCharacteristics.seedStorageResistence
                 this.dataForm.seedProteinContent = data.tMatureSeedCharacteristics.seedProteinContent
+                this.dataForm.createTime = data.tMatureSeedCharacteristics.createTime
               }
             })
           }
@@ -122,7 +134,8 @@
                 'seedProduction': this.dataForm.seedProduction,
                 'seedFatContent': this.dataForm.seedFatContent,
                 'seedStorageResistence': this.dataForm.seedStorageResistence,
-                'seedProteinContent': this.dataForm.seedProteinContent
+                'seedProteinContent': this.dataForm.seedProteinContent,
+                'createTime': this.dataForm.createTime
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

@@ -77,6 +77,12 @@
         label="种子蛋白质含量">
       </el-table-column>
       <el-table-column
+        prop="createTime"
+        header-align="center"
+        align="center"
+        label="创建日期">
+      </el-table-column>
+      <el-table-column
         fixed="right"
         header-align="center"
         align="center"

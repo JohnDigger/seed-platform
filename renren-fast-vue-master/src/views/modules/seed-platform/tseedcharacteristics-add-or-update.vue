@@ -4,6 +4,9 @@
     :close-on-click-modal="false"
     :visible.sync="visible">
     <el-form :model="dataForm" :rules="dataRule" ref="dataForm" @keyup.enter.native="dataFormSubmit()" label-width="80px">
+      <el-form-item label="种子名称" prop="seedName">
+        <el-input v-model="dataForm.seedName" placeholder="种子名称"></el-input>
+      </el-form-item>
     <el-form-item label="种子大小" prop="seedSize">
       <el-input v-model="dataForm.seedSize" placeholder="种子大小"></el-input>
     </el-form-item>
@@ -34,6 +37,14 @@
     <el-form-item label="种子生长速度" prop="seedGrowthRate">
       <el-input v-model="dataForm.seedGrowthRate" placeholder="种子生长速度"></el-input>
     </el-form-item>
+      <el-form-item label="创建日期" prop="seedGrowthRate">
+<!--        <el-input v-model="dataForm.createTime" placeholder="创建日期"></el-input>-->
+        <el-date-picker
+          v-model="dataForm.createTime"
+          type="datetime"
+          placeholder="选择日期时间">
+        </el-date-picker>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="visible = false">取消</el-button>
@@ -90,6 +101,12 @@
           ],
           seedGrowthRate: [
             { required: true, message: '种子生长速度不能为空', trigger: 'blur' }
+          ],
+          seedName: [
+            { required: true, message: '种子名称不能为空', trigger: 'blur' }
+          ],
+          createTime: [
+            { required: true, message: '创建日期不能为空', trigger: 'blur' }
           ]
         }
       }
@@ -117,6 +134,8 @@
                 this.dataForm.seedWaterContent = data.tSeedCharacteristics.seedWaterContent
                 this.dataForm.seedGerminationRate = data.tSeedCharacteristics.seedGerminationRate
                 this.dataForm.seedGrowthRate = data.tSeedCharacteristics.seedGrowthRate
+                this.dataForm.seedName = data.tSeedCharacteristics.seedName
+                this.dataForm.createTime = data.tSeedCharacteristics.createTime
               }
             })
           }
@@ -140,7 +159,9 @@
                 'seedHard': this.dataForm.seedHard,
                 'seedWaterContent': this.dataForm.seedWaterContent,
                 'seedGerminationRate': this.dataForm.seedGerminationRate,
-                'seedGrowthRate': this.dataForm.seedGrowthRate
+                'seedGrowthRate': this.dataForm.seedGrowthRate,
+                'seedName': this.dataForm.seedName,
+                'createTime': this.dataForm.createTime
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

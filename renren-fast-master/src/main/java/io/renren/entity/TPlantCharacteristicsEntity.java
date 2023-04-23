@@ -1,15 +1,18 @@
 package io.renren.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
- * 
- * 
+ *
+ *
  * @author jiajia
  * @email 541554971@qq.com
  * @date 2023-04-18 21:59:40
@@ -52,5 +55,11 @@ public class TPlantCharacteristicsEntity implements Serializable {
 	 * 生长周期
 	 */
 	private String growCycle;
+	private Long seedId;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
+
+	@TableField(exist = false)
+	private String seedName;
 
 }

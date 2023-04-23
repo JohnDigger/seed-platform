@@ -10,12 +10,13 @@ import '@/assets/scss/index.scss'
 import httpRequest from '@/utils/httpRequest' // api: https://github.com/axios/axios
 import { isAuth } from '@/utils'
 import cloneDeep from 'lodash/cloneDeep'
-
-
+import * as echarts from 'echarts'
+import 'echarts/lib/chart/line'
+Vue.prototype.$echarts = echarts
 Vue.use(VueCookie)
 Vue.config.productionTip = false
 
-// 非生产环境, 适配mockjs模拟数据                 // api: https://github.com/nuysoft/Mock
+// 非生产环境, 适配mlogiockjs模拟数据                 // api: https://github.com/nuysoft/Mock
 if (process.env.NODE_ENV !== 'production') {
   require('@/mock')
 }

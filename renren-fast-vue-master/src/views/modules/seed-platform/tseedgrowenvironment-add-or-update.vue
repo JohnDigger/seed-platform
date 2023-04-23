@@ -25,6 +25,14 @@
     <el-form-item label="土壤营养元素含量" prop="growSoilNutrientContent">
       <el-input v-model="dataForm.growSoilNutrientContent" placeholder="土壤营养元素含量"></el-input>
     </el-form-item>
+      <el-form-item label="创建日期" prop="seedGrowthRate">
+        <!--        <el-input v-model="dataForm.createTime" placeholder="创建日期"></el-input>-->
+        <el-date-picker
+          v-model="dataForm.createTime"
+          type="datetime"
+          placeholder="选择日期时间">
+        </el-date-picker>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="visible = false">取消</el-button>
@@ -69,6 +77,9 @@
           ],
           growSoilNutrientContent: [
             { required: true, message: '土壤营养元素含量不能为空', trigger: 'blur' }
+          ],
+          createTime: [
+          {required: true, message: '创建日期不能为空', trigger: 'blur'}
           ]
         }
       }
@@ -93,6 +104,7 @@
                 this.dataForm.growSoilOrganicContent = data.tSeedGrowEnvironment.growSoilOrganicContent
                 this.dataForm.growSoilQuality = data.tSeedGrowEnvironment.growSoilQuality
                 this.dataForm.growSoilNutrientContent = data.tSeedGrowEnvironment.growSoilNutrientContent
+                this.dataForm.createTime = data.tPlantCharacteristics.createTime
               }
             })
           }
@@ -113,7 +125,8 @@
                 'growSoilPh': this.dataForm.growSoilPh,
                 'growSoilOrganicContent': this.dataForm.growSoilOrganicContent,
                 'growSoilQuality': this.dataForm.growSoilQuality,
-                'growSoilNutrientContent': this.dataForm.growSoilNutrientContent
+                'growSoilNutrientContent': this.dataForm.growSoilNutrientContent,
+                'createTime': this.dataForm.createTime
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

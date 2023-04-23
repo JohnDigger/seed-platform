@@ -29,6 +29,12 @@
         label="种子特征编号">
       </el-table-column>
       <el-table-column
+        prop="seedName"
+        header-align="center"
+        align="center"
+        label="种子名称">
+      </el-table-column>
+      <el-table-column
         prop="seedSize"
         header-align="center"
         align="center"
@@ -87,6 +93,12 @@
         header-align="center"
         align="center"
         label="种子生长速度">
+      </el-table-column>
+      <el-table-column
+        prop="createTime"
+        header-align="center"
+        align="center"
+        label="创建日期">
       </el-table-column>
       <el-table-column
         fixed="right"

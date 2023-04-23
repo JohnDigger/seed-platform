@@ -5,11 +5,13 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
- * 
- * 
+ *
+ *
  * @author jiajia
  * @email 541554971@qq.com
  * @date 2023-04-18 21:59:39
@@ -64,5 +66,14 @@ public class TSeedCharacteristicsEntity implements Serializable {
 	 * 种子生长速度
 	 */
 	private Double seedGrowthRate;
+	/**
+	 * 种子名称
+	 */
+	private String seedName;
+	/**
+	 * 创建日期
+	 */
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date createTime;
 
 }
