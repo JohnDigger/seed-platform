@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TraceSeedInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TraceSeedInfoEntity" id="traceSeedInfoMap">
+        <result property="seedId" column="seed_id"/>
+        <result property="seedName" column="seed_name"/>
+        <result property="seedCategory" column="seed_category"/>
+        <result property="seedSource" column="seed_source"/>
+        <result property="seedProducer" column="seed_producer"/>
+        <result property="seedArea" column="seed_area"/>
+        <result property="telephone" column="telephone"/>
+        <result property="approvalNumber" column="approval_number"/>
+        <result property="productionDate" column="production_date"/>
+        <result property="createDate" column="create_date"/>
+        <result property="seedTraceCode" column="seed_trace_code"/>
+    </resultMap>
+
+
+</mapper>
