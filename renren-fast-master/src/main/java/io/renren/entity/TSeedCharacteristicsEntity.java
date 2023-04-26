@@ -1,10 +1,12 @@
 package io.renren.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -75,5 +77,10 @@ public class TSeedCharacteristicsEntity implements Serializable {
 	 */
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime;
+
+	@TableField(exist = false)
+	private TMatureSeedCharacteristicsEntity tMatureSeedCharacteristicsEntity;
+	@TableField(exist = false)
+	private TSeedGrowEnvironmentEntity tSeedGrowEnvironmentEntity;
 
 }

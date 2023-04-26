@@ -24,7 +24,7 @@ export default {
       this.charts = echarts.init(document.getElementById('echarts2'))
       this.charts.setOption({
         title: {
-          text: '商品各类别销售比例图',
+          text: '新品种颜色占比情况',
           subtext: '占比情况',
           left: 'center'
         },
@@ -55,7 +55,7 @@ export default {
     init () {
       this.$nextTick(() => {
         this.$http({
-          url: this.$http.adornUrl(`/product/panel/getPercent`),
+          url: this.$http.adornUrl(`/seed-platform/tseedcharacteristics/getPercent`),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {

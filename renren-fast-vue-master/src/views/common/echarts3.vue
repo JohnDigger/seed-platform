@@ -25,7 +25,7 @@ export default {
       this.charts = echarts.init(document.getElementById('echarts3'))
       this.charts.setOption({
         title: {
-          text: '近七日销售情况',
+          text: '近七日溯源情况',
           left: 'center'
         },
         color: '#73c0de',

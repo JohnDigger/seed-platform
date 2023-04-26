@@ -1,15 +1,12 @@
 package io.renren.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.entity.TSeedCharacteristicsEntity;
 import io.renren.service.TSeedCharacteristicsService;
@@ -19,7 +16,7 @@ import io.renren.common.utils.R;
 
 
 /**
- * 
+ *
  *
  * @author jiajia
  * @email 541554971@qq.com
@@ -85,6 +82,39 @@ public class TSeedCharacteristicsController {
 		tSeedCharacteristicsService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    @RequestMapping("/getThisYear")
+    public R getThisYear(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",tSeedCharacteristicsService.getThisYear());
+        return R.ok(map);
+    }
+    @RequestMapping("/getLastYear")
+    public R getLastYear(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",tSeedCharacteristicsService.getLastYear());
+        return R.ok(map);
+    }
+    @GetMapping("/getPercent")
+    public R getPercent(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",tSeedCharacteristicsService.getProductPercentage());
+        return R.ok(map);
+    }
+
+    @GetMapping("/selectSeedByName")
+    public R selectSeedByName(@RequestParam("seedName")String seedName){
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",tSeedCharacteristicsService.selectSeedByName(seedName));
+        return R.ok(map);
+    }
+
+    @GetMapping("/getAllSeedName")
+    public R getAllSeedName(){
+        Map<String,Object> map = new HashMap<>();
+        map.put("data",tSeedCharacteristicsService.getAllSeed());
+        return R.ok(map);
     }
 
 }

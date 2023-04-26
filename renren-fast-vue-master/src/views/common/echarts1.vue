@@ -28,7 +28,7 @@ export default {
       this.applyChart = echarts.init(document.getElementById('echarts1'))
       this.applyChart.setOption({
         title: {
-          text: '近两年销售数量比对',
+          text: '近两年新品种数量对比',
           left: 'center'
         },
         color: colors,
@@ -126,7 +126,7 @@ export default {
     init () {
       this.$nextTick(() => {
         this.$http({
-          url: this.$http.adornUrl(`/product/panel/getThisYear`),
+          url: this.$http.adornUrl(`/seed-platform/tseedcharacteristics/getThisYear`),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
@@ -140,7 +140,7 @@ export default {
       })
       this.$nextTick(() => {
         this.$http({
-          url: this.$http.adornUrl(`/product/panel/getLastYear`),
+          url: this.$http.adornUrl(`/seed-platform/tseedcharacteristics/getLastYear`),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
