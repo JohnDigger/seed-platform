@@ -10,6 +10,20 @@
     <el-form-item label="防伪码地址" prop="seedTraceUrl">
       <el-input v-model="dataForm.seedTraceUrl" placeholder="防伪码地址"></el-input>
     </el-form-item>
+    <el-form-item label="被扫次数" prop="codeScanCount">
+      <el-input v-model="dataForm.codeScanCount" placeholder="被扫次数"></el-input>
+    </el-form-item>
+    <el-form-item label="预警等级" prop="warningLevel">
+<!--      <el-input v-model="dataForm.warningLevel" placeholder="预警等级"></el-input>-->
+      <el-select v-model="dataForm.warningLevel" placeholder="预警等级">
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+    </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="visible = false">取消</el-button>
@@ -22,11 +36,27 @@
   export default {
     data () {
       return {
+        options: [{
+          value: '蓝色',
+          label: '蓝色'
+        }, {
+          value: '黄色',
+          label: '黄色'
+        }, {
+          value: '橙色',
+          label: '橙色'
+        }, {
+          value: '红色',
+          label: '红色'
+        }],
+
         visible: false,
         dataForm: {
           traceCodeId: 0,
           seedTraceCode: '',
-          seedTraceUrl: ''
+          seedTraceUrl: '',
+          codeScanCount: '',
+          warningLevel: ''
         },
         dataRule: {
           seedTraceCode: [
@@ -34,6 +64,12 @@
           ],
           seedTraceUrl: [
             { required: true, message: '防伪码地址不能为空', trigger: 'blur' }
+          ],
+          codeScanCount: [
+            { required: true, message: '被扫次数不能为空', trigger: 'blur' }
+          ],
+          warningLevel: [
+            { required: true, message: '预警等级不能为空', trigger: 'blur' }
           ]
         }
       }
@@ -53,6 +89,8 @@
               if (data && data.code === 0) {
                 this.dataForm.seedTraceCode = data.traceCodeInfo.seedTraceCode
                 this.dataForm.seedTraceUrl = data.traceCodeInfo.seedTraceUrl
+                this.dataForm.codeScanCount = data.traceCodeInfo.codeScanCount
+                this.dataForm.warningLevel = data.traceCodeInfo.warningLevel
               }
             })
           }
@@ -68,7 +106,9 @@
               data: this.$http.adornData({
                 'traceCodeId': this.dataForm.traceCodeId || undefined,
                 'seedTraceCode': this.dataForm.seedTraceCode,
-                'seedTraceUrl': this.dataForm.seedTraceUrl
+                'seedTraceUrl': this.dataForm.seedTraceUrl,
+                'codeScanCount': this.dataForm.codeScanCount,
+                'warningLevel': this.dataForm.warningLevel
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

@@ -6,8 +6,8 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="isAuth('seed-platform:tracecodeinfo:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
-        <el-button v-if="isAuth('seed-platform:tracecodeinfo:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
+        <el-button v-if="isAuth('seed-platform:seedprocessmanagement:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button v-if="isAuth('seed-platform:seedprocessmanagement:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
     <el-table
@@ -22,35 +22,89 @@
         align="center"
         width="50">
       </el-table-column>
+<!--      <el-table-column-->
+<!--        prop="id"-->
+<!--        header-align="center"-->
+<!--        align="center"-->
+<!--        label="id">-->
+<!--      </el-table-column>-->
       <el-table-column
-        prop="traceCodeId"
+        prop="name"
         header-align="center"
         align="center"
-        label="溯源码id">
+        label="名称">
       </el-table-column>
       <el-table-column
-        prop="seedTraceCode"
+        prop="varieties"
         header-align="center"
         align="center"
-        label="防伪码">
+        label="品种">
       </el-table-column>
       <el-table-column
-        prop="seedTraceUrl"
+        prop="speciesGenera"
         header-align="center"
         align="center"
-        label="防伪码地址">
+        label="种属">
       </el-table-column>
       <el-table-column
-        prop="codeScanCount"
+        prop="size"
         header-align="center"
         align="center"
-        label="被扫次数">
+        label="种子大小">
       </el-table-column>
       <el-table-column
-        prop="warningLevel"
+        prop="color"
         header-align="center"
         align="center"
-        label="预警等级">
+        label="种子颜色">
+      </el-table-column>
+      <el-table-column
+        prop="origin"
+        header-align="center"
+        align="center"
+        label="种子产地">
+      </el-table-column>
+      <el-table-column
+        prop="variety"
+        header-align="center"
+        align="center"
+        label="种子品种">
+      </el-table-column>
+      <el-table-column
+        prop="plantingMethod"
+        header-align="center"
+        align="center"
+        label="种植方式">
+      </el-table-column>
+      <el-table-column
+        prop="plantingArea"
+        header-align="center"
+        align="center"
+        label="主要种植区域">
+      </el-table-column>
+      <el-table-column
+        prop="sowingTime"
+        header-align="center"
+        align="center"
+        label="播种时间">
+      </el-table-column>
+      <el-table-column
+        prop="growthCycle"
+        header-align="center"
+        align="center"
+        label="生长周期">
+      </el-table-column>
+      <el-table-column
+        prop="environmentTemperature"
+        header-align="center"
+        align="center"
+        label="环境温度（℃）">
+      </el-table-column>
+      <el-table-column
+        prop="averageYield"
+        header-align="center"
+        align="center"
+        label="平均产量">
       </el-table-column>
       <el-table-column
         fixed="right"
@@ -59,8 +113,8 @@
         width="150"
         label="操作">
         <template slot-scope="scope">
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.traceCodeId)">修改</el-button>
-          <el-button type="text" size="small" @click="deleteHandle(scope.row.traceCodeId)">删除</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
+          <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,7 +133,7 @@
 </template>
 
 <script>
-  import AddOrUpdate from './tracecodeinfo-add-or-update'
+  import AddOrUpdate from './seedprocessmanagement-add-or-update'
   export default {
     data () {
       return {
@@ -106,7 +160,7 @@
       getDataList () {
         this.dataListLoading = true
         this.$http({
-          url: this.$http.adornUrl('/seed-platform/tracecodeinfo/list'),
+          url: this.$http.adornUrl('/seed-platform/seedprocessmanagement/list'),
           method: 'get',
           params: this.$http.adornParams({
             'page': this.pageIndex,
@@ -149,7 +203,7 @@
       // 删除
       deleteHandle (id) {
         var ids = id ? [id] : this.dataListSelections.map(item => {
-          return item.traceCodeId
+          return item.id
         })
         this.$confirm(`确定对[id=${ids.join(',')}]进行[${id ? '删除' : '批量删除'}]操作?`, '提示', {
           confirmButtonText: '确定',
@@ -157,7 +211,7 @@
           type: 'warning'
         }).then(() => {
           this.$http({
-            url: this.$http.adornUrl('/seed-platform/tracecodeinfo/delete'),
+            url: this.$http.adornUrl('/seed-platform/seedprocessmanagement/delete'),
             method: 'post',
             data: this.$http.adornData(ids, false)
           }).then(({data}) => {

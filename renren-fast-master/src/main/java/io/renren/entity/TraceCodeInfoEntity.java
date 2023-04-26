@@ -8,11 +8,11 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 
- * 
+ *
+ *
  * @author jiajia
  * @email 541554971@qq.com
- * @date 2023-04-23 21:36:46
+ * @date 2023-04-25 21:03:12
  */
 @Data
 @TableName("trace_code_info")
@@ -32,5 +32,13 @@ public class TraceCodeInfoEntity implements Serializable {
 	 * 防伪码地址
 	 */
 	private String seedTraceUrl;
+	/**
+	 * 被扫次数
+	 */
+	private Integer codeScanCount;
+	/**
+	 * 预警等级
+	 */
+	private String warningLevel;
 
 }

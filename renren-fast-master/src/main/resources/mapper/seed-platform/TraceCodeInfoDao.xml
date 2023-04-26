@@ -8,6 +8,8 @@
         <result property="traceCodeId" column="trace_code_id"/>
         <result property="seedTraceCode" column="seed_trace_code"/>
         <result property="seedTraceUrl" column="seed_trace_url"/>
+        <result property="codeScanCount" column="code_scan_count"/>
+        <result property="warningLevel" column="warning_level"/>
     </resultMap>
 
 

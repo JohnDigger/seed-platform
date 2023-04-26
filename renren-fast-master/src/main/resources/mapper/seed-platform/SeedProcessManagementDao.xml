@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.SeedProcessManagementDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.SeedProcessManagementEntity" id="seedProcessManagementMap">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="varieties" column="varieties"/>
+        <result property="speciesGenera" column="species_genera"/>
+        <result property="size" column="size"/>
+        <result property="color" column="color"/>
+        <result property="origin" column="origin"/>
+        <result property="variety" column="variety"/>
+        <result property="plantingMethod" column="planting_method"/>
+        <result property="plantingArea" column="planting_area"/>
+        <result property="sowingTime" column="sowing_time"/>
+        <result property="growthCycle" column="growth_cycle"/>
+        <result property="environmentTemperature" column="environment_temperature"/>
+        <result property="averageYield" column="average_yield"/>
+    </resultMap>
+
+
+</mapper>
