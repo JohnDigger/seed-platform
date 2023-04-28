@@ -60,9 +60,13 @@ public class ShiroConfig {
         filterMap.put("/swagger-resources/**", "anon");
         filterMap.put("/captcha.jpg", "anon");
         filterMap.put("/aaa.txt", "anon");
+        filterMap.put("/seed-platform/plantingmethod/**", "anon");
+        filterMap.put("/seed-platform/plantingarea/**", "anon");
+        filterMap.put("/seed-platform/plantingdensity/**", "anon");
+        filterMap.put("/seed-platform/plantingtime/**", "anon");
+        filterMap.put("/seed-platform/seedyield/**", "anon");
         filterMap.put("/**", "oauth2");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
-
         return shiroFilter;
     }
 
