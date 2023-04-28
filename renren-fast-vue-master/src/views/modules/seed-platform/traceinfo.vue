@@ -26,7 +26,8 @@
         prop="traceId"
         header-align="center"
         align="center"
-        label="溯源id">
+        label="溯源id"
+        width="50">
       </el-table-column>
       <el-table-column
         prop="traceSeedName"
@@ -38,7 +39,8 @@
         prop="traceDate"
         header-align="center"
         align="center"
-        label="扫码日期">
+        label="扫码日期"
+        width="220">
       </el-table-column>
       <el-table-column
         prop="traceArea"

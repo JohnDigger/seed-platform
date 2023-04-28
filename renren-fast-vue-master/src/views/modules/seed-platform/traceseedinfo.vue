@@ -26,7 +26,8 @@
         prop="seedId"
         header-align="center"
         align="center"
-        label="种子id">
+        label="种子id"
+        width="50">
       </el-table-column>
       <el-table-column
         prop="seedName"

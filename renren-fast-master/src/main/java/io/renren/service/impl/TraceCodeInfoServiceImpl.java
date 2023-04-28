@@ -4,6 +4,8 @@ import io.renren.dao.TraceCodeInfoDao;
 import io.renren.entity.TraceCodeInfoEntity;
 import io.renren.service.TraceCodeInfoService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -15,9 +17,14 @@ import io.renren.dao.TraceCodeInfoDao;
 import io.renren.entity.TraceCodeInfoEntity;
 import io.renren.service.TraceCodeInfoService;
 
+import javax.annotation.Resource;
+
 
 @Service("traceCodeInfoService")
 public class TraceCodeInfoServiceImpl extends ServiceImpl<TraceCodeInfoDao, TraceCodeInfoEntity> implements TraceCodeInfoService {
+
+    @Resource
+    private TraceCodeInfoDao traceCodeInfoDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -28,5 +35,22 @@ public class TraceCodeInfoServiceImpl extends ServiceImpl<TraceCodeInfoDao, Trac
 
         return new PageUtils(page);
     }
+
+    @Override
+    public Integer getTraceCodeCount() {
+
+        return traceCodeInfoDao.getTraceCodeCount();
+    }
+
+    @Override
+    public List<Map<String, Integer>> getTraceCodeCountByYear() {
+        return traceCodeInfoDao.getTraceCodeCountByYear();
+    }
+
+    @Override
+    public List<Map<String, Integer>> getTraceCodeCountByWarningLevel() {
+        return traceCodeInfoDao.getTraceCodeCountByWarningLevel();
+    }
+
 
 }

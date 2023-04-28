@@ -10,6 +10,7 @@
         <result property="seedTraceUrl" column="seed_trace_url"/>
         <result property="codeScanCount" column="code_scan_count"/>
         <result property="warningLevel" column="warning_level"/>
+        <result property="createtime" column="createtime"/>
     </resultMap>
 
 

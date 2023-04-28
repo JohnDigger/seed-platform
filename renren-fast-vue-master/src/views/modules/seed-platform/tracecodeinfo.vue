@@ -26,7 +26,8 @@
         prop="traceCodeId"
         header-align="center"
         align="center"
-        label="溯源码id">
+        label="溯源码id"
+        width="50">
       </el-table-column>
       <el-table-column
         prop="seedTraceCode"
@@ -44,13 +45,22 @@
         prop="codeScanCount"
         header-align="center"
         align="center"
-        label="被扫次数">
+        label="被扫次数"
+        width="80">
       </el-table-column>
       <el-table-column
         prop="warningLevel"
         header-align="center"
         align="center"
-        label="预警等级">
+        label="预警等级"
+        width="50">
+      </el-table-column>
+      <el-table-column
+        prop="createTime"
+        header-align="center"
+        align="center"
+        label="创建时间"
+        width="220">
       </el-table-column>
       <el-table-column
         fixed="right"

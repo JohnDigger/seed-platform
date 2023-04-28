@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 /**
@@ -40,5 +42,10 @@ public class TraceCodeInfoEntity implements Serializable {
 	 * 预警等级
 	 */
 	private String warningLevel;
+	/**
+	 * 创建时间
+	 */
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+	private Date createTime;
 
 }

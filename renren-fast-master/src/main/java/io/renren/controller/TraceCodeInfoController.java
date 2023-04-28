@@ -1,17 +1,14 @@
 package io.renren.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import io.renren.entity.TraceCodeInfoEntity;
 import io.renren.service.TraceCodeInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.entity.TraceCodeInfoEntity;
 import io.renren.service.TraceCodeInfoService;
@@ -21,7 +18,7 @@ import io.renren.common.utils.R;
 
 
 /**
- * 
+ *
  *
  * @author jiajia
  * @email 541554971@qq.com
@@ -87,6 +84,24 @@ public class TraceCodeInfoController {
 		traceCodeInfoService.removeByIds(Arrays.asList(traceCodeIds));
 
         return R.ok();
+    }
+
+    @GetMapping("/getTraceCodeCount")
+    public R getTraceCodeCount(){
+        Integer traceCodeCount = traceCodeInfoService.getTraceCodeCount();
+        return R.ok().put("traceCodeCount", traceCodeCount);
+    }
+
+    @GetMapping("/getTraceCodeCountByYear")
+    public R getTraceCodeCountByYear(){
+        List<Map<String,Integer>> traceCodeCountByYear = traceCodeInfoService.getTraceCodeCountByYear();
+        return R.ok().put("traceCodeCountByYear", traceCodeCountByYear);
+    }
+
+    @GetMapping("/getTraceCodeCountByWarningLevel")
+    public R getTraceCodeCountByWarningLevel(){
+        List<Map<String,Integer>> traceCodeCountByWarningLevel = traceCodeInfoService.getTraceCodeCountByWarningLevel();
+        return R.ok().put("traceCodeCountByWarningLevel", traceCodeCountByWarningLevel);
     }
 
 }

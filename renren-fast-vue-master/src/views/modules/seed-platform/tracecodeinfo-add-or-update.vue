@@ -24,6 +24,14 @@
         </el-option>
       </el-select>
     </el-form-item>
+      <el-form-item label="创建时间" prop="createTime">
+        <!--      <el-input v-model="dataForm.traceDate" placeholder=""></el-input>-->
+        <el-date-picker
+          v-model="dataForm.createTime"
+          type="datetime"
+          placeholder="创建时间">
+        </el-date-picker>
+      </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
       <el-button @click="visible = false">取消</el-button>
@@ -56,7 +64,8 @@
           seedTraceCode: '',
           seedTraceUrl: '',
           codeScanCount: '',
-          warningLevel: ''
+          warningLevel: '',
+          createTime: ''
         },
         dataRule: {
           seedTraceCode: [
@@ -70,6 +79,9 @@
           ],
           warningLevel: [
             { required: true, message: '预警等级不能为空', trigger: 'blur' }
+          ],
+          createTime: [
+            { required: true, message: '创建时间不能为空', trigger: 'blur' }
           ]
         }
       }
@@ -91,6 +103,7 @@
                 this.dataForm.seedTraceUrl = data.traceCodeInfo.seedTraceUrl
                 this.dataForm.codeScanCount = data.traceCodeInfo.codeScanCount
                 this.dataForm.warningLevel = data.traceCodeInfo.warningLevel
+                this.dataForm.createTime = data.traceCodeInfo.createTime
               }
             })
           }
@@ -108,7 +121,8 @@
                 'seedTraceCode': this.dataForm.seedTraceCode,
                 'seedTraceUrl': this.dataForm.seedTraceUrl,
                 'codeScanCount': this.dataForm.codeScanCount,
-                'warningLevel': this.dataForm.warningLevel
+                'warningLevel': this.dataForm.warningLevel,
+                'createTime': this.dataForm.createTime
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

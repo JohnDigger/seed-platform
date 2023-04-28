@@ -1,17 +1,15 @@
 package io.renren.controller;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.mysql.cj.x.protobuf.Mysqlx;
 import io.renren.entity.TraceInfoEntity;
 import io.renren.service.TraceInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.entity.TraceInfoEntity;
 import io.renren.service.TraceInfoService;
@@ -21,7 +19,7 @@ import io.renren.common.utils.R;
 
 
 /**
- * 
+ *
  *
  * @author jiajia
  * @email 541554971@qq.com
@@ -88,5 +86,36 @@ public class TraceInfoController {
 
         return R.ok();
     }
+
+    @GetMapping("/getTraceCount")
+    public R getTraceCount(){
+        Integer traceCount = traceInfoService.getTraceCount();
+        return R.ok().put("traceCount", traceCount);
+    }
+
+    @GetMapping("/getTraceCountByYear")
+    public R getTraceCountByYear(){
+        List<Map<String,Integer>> traceCountByYear = traceInfoService.getTraceCountByYear();
+        return R.ok().put("traceCountByYear", traceCountByYear);
+    }
+
+    @GetMapping("/getTraceCountByNY")
+    public R getTraceCountByNY(String name){
+        List<Map<String,Integer>> traceCountByNY = traceInfoService.getTraceCountByNY(name);
+        return R.ok().put("traceCountByNY",traceCountByNY);
+    }
+
+    @GetMapping("/getTraceAreaByName")
+    public R getTraceAreaByName(String name){
+        List<String> traceAreaByName = traceInfoService.getTraceAreaByName(name);
+        return R.ok().put("traceAreaByName", traceAreaByName);
+    }
+
+    @GetMapping("/getTraceSeedName")
+    public R getTraceSeedName(){
+        List<String> traceSeedName = traceInfoService.getTraceSeedName();
+        return R.ok().put("traceSeedName", traceSeedName);
+    }
+
 
 }
