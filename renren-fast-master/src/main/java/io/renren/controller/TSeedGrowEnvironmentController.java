@@ -1,15 +1,15 @@
 package io.renren.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
+import io.renren.service.TraceCodeInfoService;
+import io.renren.service.TraceInfoService;
+import io.renren.service.TraceSeedInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.entity.TSeedGrowEnvironmentEntity;
 import io.renren.service.TSeedGrowEnvironmentService;
@@ -30,6 +30,12 @@ import io.renren.common.utils.R;
 public class TSeedGrowEnvironmentController {
     @Autowired
     private TSeedGrowEnvironmentService tSeedGrowEnvironmentService;
+    @Autowired
+    private TraceSeedInfoService traceSeedInfoService;
+    @Autowired
+    private TraceCodeInfoService traceCodeInfoService;
+    @Autowired
+    private TraceInfoService traceInfoService;
 
     /**
      * 列表
@@ -85,6 +91,20 @@ public class TSeedGrowEnvironmentController {
 		tSeedGrowEnvironmentService.removeByIds(Arrays.asList(ids));
 
         return R.ok();
+    }
+
+    @GetMapping("/top")
+    public R getTop(){
+        Integer newSeedCount = tSeedGrowEnvironmentService.count();
+        Integer seedInfoCount = traceSeedInfoService.count();
+        Integer codeCount = traceCodeInfoService.count();
+        Integer traceCount = traceInfoService.count();
+        Map<String,Object> map = new HashMap<>();
+        map.put("newSeedCount",newSeedCount);
+        map.put("seedInfoCount",seedInfoCount);
+        map.put("codeCount",codeCount);
+        map.put("traceCount",traceCount);
+        return R.ok(map);
     }
 
 }

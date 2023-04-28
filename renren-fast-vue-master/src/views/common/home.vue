@@ -8,7 +8,7 @@
           <div>
             <i class="el-icon-s-flag" style="color: purple"></i>
             <!--            <span v-text="dataList.countOrder"></span>-->
-            <CountTo :startVal="dataList.startVal" :endVal="dataList.countOrder" :duration='dataList.duration'></CountTo>
+            <CountTo :startVal="dataList.startVal" :endVal="dataList.newSeedCount" :duration='dataList.duration'></CountTo>
           </div>
         </el-card>
       </el-col>
@@ -18,25 +18,25 @@
           <div>
             <i class="el-icon-user-solid" style="color: green"></i>
             <!--            <span v-text="dataList.countUser"></span>-->
-            <CountTo :startVal="dataList.startVal" :endVal="dataList.countUser" :duration='dataList.duration'></CountTo>
+            <CountTo :startVal="dataList.startVal" :endVal="dataList.seedInfoCount" :duration='dataList.duration'></CountTo>
           </div>
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card class="box-card">
-          <h3>出库总量</h3>
+          <h3>二维码总量</h3>
           <div>
             <i class="el-icon-s-flag" style="color: red"></i>
-            <CountTo :startVal="dataList.startVal" :endVal="dataList.total" :duration='dataList.duration'></CountTo>
+            <CountTo :startVal="dataList.startVal" :endVal="dataList.codeCount" :duration='dataList.duration'></CountTo>
           </div>
         </el-card>
       </el-col>
       <el-col :span="6">
         <el-card class="box-card">
-          <h3>商品个数</h3>
+          <h3>溯源次数</h3>
           <div>
             <i class="el-icon-star-on" style="color: blue"></i>
-            <CountTo :startVal="dataList.startVal" :endVal="dataList.countProduct" :duration='dataList.duration'></CountTo>
+            <CountTo :startVal="dataList.startVal" :endVal="dataList.traceCount" :duration='dataList.duration'></CountTo>
           </div>
         </el-card>
       </el-col>
@@ -70,10 +70,10 @@ export default {
   data () {
     return {
       dataList: {
-        countProduct: 0,
-        countUser: 15,
-        countOrder: 15,
-        total: 0,
+        newSeedCount: 0,
+        seedInfoCount: 0,
+        codeCount: 0,
+        traceCount: 0,
         startVal: 0,
         endVal: 0,
         duration: 3000,
@@ -101,15 +101,15 @@ export default {
     init () {
       this.$nextTick(() => {
         this.$http({
-          url: this.$http.adornUrl(`/product/panel/top`),
+          url: this.$http.adornUrl(`/seed-platform/tseedgrowenvironment/top`),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {
           if (data && data.code === 0) {
-            this.dataList.countOrder = data.countOrder
-            this.dataList.countProduct = data.countProduct
-            this.dataList.countUser = data.countUser
-            this.dataList.total = data.total
+            this.dataList.newSeedCount = data.newSeedCount
+            this.dataList.seedInfoCount = data.seedInfoCount
+            this.dataList.codeCount = data.codeCount
+            this.dataList.traceCount = data.traceCount
           }
         })
       })

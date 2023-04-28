@@ -41,7 +41,10 @@ export default {
           {
             data: [],
             type: 'line',
-            areaStyle: {}
+            areaStyle: {},
+            lineStyle:{
+              color: "#73c0de"
+            }
           }
         ]
       })
@@ -49,7 +52,7 @@ export default {
     init () {
       this.$nextTick(() => {
         this.$http({
-          url: this.$http.adornUrl(`/product/panel/getRecent`),
+          url: this.$http.adornUrl(`/seed-platform/traceinfo/getSeven`),
           method: 'get',
           params: this.$http.adornParams()
         }).then(({data}) => {

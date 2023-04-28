@@ -19,8 +19,8 @@ export default {
     }
   },
   mounted () {
-    this.echartsInit()
     this.init()
+    this.echartsInit()
   },
   methods: {
     echartsInit () {
@@ -123,7 +123,7 @@ export default {
         ]
       })
     },
-    init () {
+    async init () {
       this.$nextTick(() => {
         this.$http({
           url: this.$http.adornUrl(`/seed-platform/tseedcharacteristics/getThisYear`),
@@ -157,16 +157,17 @@ export default {
               }],
               series: [{
                 name: 'Precipitation(2022)',
-                data: this.thisYearData,
+                data: this.lastYearData,
                 xAxisIndex: 1
               },
-              { name: 'Precipitation(2023)',
-                data: this.lastYearData
-              }]
+                { name: 'Precipitation(2023)',
+                  data: this.thisYearData
+                }]
             })
           }
         })
       })
+
     }
   }
 }
