@@ -45,5 +45,18 @@ public interface TraceInfoDao extends BaseMapper<TraceInfoEntity> {
 	@Select("SELECT DISTINCT trace_seed_name " +
 		"FROM trace_info;")
 	List<String> getTraceSeedName();
+	@Select("SELECT DATE(trace_info.trace_date) AS date, COUNT(*) AS count FROM trace_info\n" +
+			"WHERE trace_info.trace_date BETWEEN (\n" +
+			"  SELECT MIN(trace_info.trace_date) FROM (\n" +
+			"    SELECT trace_info.trace_date FROM trace_info\n" +
+			"    WHERE trace_info.trace_date <= CURDATE()\n" +
+			"    ORDER BY trace_info.trace_date DESC\n" +
+			"    LIMIT 7\n" +
+			"  ) AS t\n" +
+			") AND CURDATE()\n" +
+			"GROUP BY DATE(trace_info.trace_date)\n" +
+			"ORDER BY DATE(trace_info.trace_date) LIMIT 7\n" +
+			"\n")
+	List<Map<String,Object>> getRecentSeven();
 
 }

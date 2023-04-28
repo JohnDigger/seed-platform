@@ -37,6 +37,11 @@ public class TraceInfoServiceImpl extends ServiceImpl<TraceInfoDao, TraceInfoEnt
     }
 
     @Override
+    public List<Map<String, Object>> getRecentSeven() {
+        return traceInfoDao.getRecentSeven();
+    }
+
+    @Override
     public Integer getTraceCount(){
         return traceInfoDao.getTraceConut();
     }

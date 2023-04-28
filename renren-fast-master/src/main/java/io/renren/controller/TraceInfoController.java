@@ -1,6 +1,7 @@
 package io.renren.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -115,6 +116,12 @@ public class TraceInfoController {
     public R getTraceSeedName(){
         List<String> traceSeedName = traceInfoService.getTraceSeedName();
         return R.ok().put("traceSeedName", traceSeedName);
+    }
+    @GetMapping("/getSeven")
+    public R getSeven(){
+        Map<String,Object>map = new HashMap<>();
+        map.put("data",traceInfoService.getRecentSeven());
+        return R.ok(map);
     }
 
 

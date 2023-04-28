@@ -23,5 +23,6 @@ public interface TraceInfoService extends IService<TraceInfoEntity> {
     List<String> getTraceSeedName();
 
     PageUtils queryPage(Map<String, Object> params);
+    List<Map<String,Object>> getRecentSeven();
 }
 
