@@ -26,7 +26,8 @@
         prop="id"
         header-align="center"
         align="center"
-        label="生长环境特征编号">
+        label="生长环境特征编号"
+        v-if="false">
       </el-table-column>
       <el-table-column
         prop="growTemp"
@@ -74,7 +75,8 @@
         prop="createTime"
         header-align="center"
         align="center"
-        label="创建日期">
+        label="创建日期"
+        v-if="false">
       </el-table-column>
       <el-table-column
         fixed="right"

@@ -82,5 +82,7 @@ public class TSeedCharacteristicsEntity implements Serializable {
 	private TMatureSeedCharacteristicsEntity tMatureSeedCharacteristicsEntity;
 	@TableField(exist = false)
 	private TSeedGrowEnvironmentEntity tSeedGrowEnvironmentEntity;
+	@TableField(exist = false)
+	private TPlantCharacteristicsEntity tPlantCharacteristicsEntity;
 
 }

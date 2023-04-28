@@ -26,7 +26,8 @@
         prop="id"
         header-align="center"
         align="center"
-        label="种子特征编号">
+        label="种子特征编号"
+        v-if="false">
       </el-table-column>
       <el-table-column
         prop="seedName"
@@ -98,7 +99,8 @@
         prop="createTime"
         header-align="center"
         align="center"
-        label="创建日期">
+        label="创建日期"
+        v-if="false">
       </el-table-column>
       <el-table-column
         fixed="right"

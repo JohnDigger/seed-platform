@@ -35,6 +35,10 @@
             <result column="seed_fat_content" property="seedFatContent" />
             <result column="seed_storage_resistence" property="seedStorageResistence" />
         </association>
+        <association property="tPlantCharacteristicsEntity" javaType="io.renren.entity.TPlantCharacteristicsEntity">
+            <id column="plant_id" property="id" />
+            <result column="grow_cycle" property="growCycle" />
+        </association>
     </resultMap>
     <select id="selectSeedByName" parameterType="string" resultMap="seedByName">
         SELECT
@@ -49,7 +53,8 @@
             t_seed_grow_environment.grow_temp,
             t_seed_grow_environment.grow_humidity,
             t_seed_grow_environment.grow_light,
-            t_seed_characteristics.seed_growth_rate
+            t_seed_characteristics.seed_growth_rate,
+            t_plant_characteristics.grow_cycle
         FROM
             t_seed_characteristics
                 INNER JOIN
@@ -60,6 +65,10 @@
             t_mature_seed_characteristics
             ON
                 t_seed_characteristics.id = t_mature_seed_characteristics.seed_id
+                INNER JOIN
+            t_plant_characteristics
+            ON
+                t_seed_characteristics.id = t_plant_characteristics.seed_id
         WHERE t_seed_characteristics.seed_name = #{seedName}
     </select>
 
