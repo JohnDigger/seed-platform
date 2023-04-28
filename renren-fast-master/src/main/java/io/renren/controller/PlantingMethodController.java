@@ -37,7 +37,6 @@ public class PlantingMethodController {
      * 列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("seed-platform:plantingmethod:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = plantingMethodService.queryPage(params);
 
@@ -49,7 +48,6 @@ public class PlantingMethodController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("seed-platform:plantingmethod:info")
     public R info(@PathVariable("id") Integer id){
         PlantingMethodEntity plantingMethod = plantingMethodService.getById(id);
 
@@ -60,7 +58,6 @@ public class PlantingMethodController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("seed-platform:plantingmethod:save")
     public R save(@RequestBody PlantingMethodEntity plantingMethod){
         plantingMethodService.save(plantingMethod);
 
@@ -71,7 +68,6 @@ public class PlantingMethodController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("seed-platform:plantingmethod:update")
     public R update(@RequestBody PlantingMethodEntity plantingMethod){
         plantingMethodService.updateById(plantingMethod);
 
@@ -82,7 +78,6 @@ public class PlantingMethodController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("seed-platform:plantingmethod:delete")
     public R delete(@RequestBody Integer[] ids){
         plantingMethodService.removeByIds(Arrays.asList(ids));
 
