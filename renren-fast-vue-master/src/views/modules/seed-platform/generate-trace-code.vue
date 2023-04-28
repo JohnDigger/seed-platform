@@ -1,5 +1,6 @@
 <template>
   <div class="mod-config">
+    <h2 class="text-center mb-4">{{ title }}</h2>
     <el-form :inline="true" :model="dataForm" @keyup.enter.native="getDataList()">
       <el-form-item>
         <el-input v-model="dataForm.key" placeholder="参数名" clearable></el-input>
