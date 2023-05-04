@@ -31,7 +31,7 @@ name: "warning_level_pie",
 
     // 设置图表选项
     chart.setOption({
-      color:["red","orange","yellow","blue"],
+      color:["yellow","red","orange","blue"],
       tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',

@@ -130,7 +130,7 @@ export default {
           this.totalPage = data.page.totalCount
           for (var i=0;i<this.dataList.length;i++){
             this.$set(this.dataList[i], 'traceCodeUrl', 'https://example.com/erweima.png')
-            this.$set(this.dataList[i], 'localUrl', './src/assets/img/二维码.png')
+            this.$set(this.dataList[i], 'localUrl', '../../../../src/assets/img/二维码.png')
 
             console.log(this.dataList[i])
             // this.dataList[i]["traceCodeUrl"] = "https://example.com/erweima.png"
