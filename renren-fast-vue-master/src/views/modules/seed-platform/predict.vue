@@ -27,7 +27,7 @@
                           点击确认获取结果
                         </h2>
                       </div>
-                      <el-button type="primary" plain class="left-up" style="margin-top: 10px">计算结果</el-button>
+                      <el-button type="primary" plain class="left-up" style="margin-top: 10px" @click="predict()">计算结果</el-button>
                     </el-col>
                   </el-row>
                 </div>
@@ -130,8 +130,8 @@
         <div class="right-side">
           <div
             style="display: flex;justify-content: center;align-items: center;flex-direction: column;height: 100vh;color: #8a979e">
-            <div><h1>新品良品率为：89%</h1></div>
-            <div><h1>新品失败风险为：21%</h1></div>
+            <div><h1>新品良品率为：{{successRate*100}}%</h1></div>
+            <div><h1>新品失败风险为：{{ (1-successRate)*100}}%</h1></div>
             <div><p>温馨提示:本工具仅用于初步风险评估，最终结果可能会收到多种因素影响</p></div>
           </div>
 
@@ -162,7 +162,8 @@ export default {
       seed_ph: 0,
       seed_oil: 0.0,
       organic_content: 0,
-      resistence: ''
+      resistence: '',
+      successRate: 0
     }
   },
   methods: {
@@ -216,6 +217,17 @@ export default {
     },
     handleChange(value) {
       this.data_render(value)
+    },
+    predict(){
+      this.$http({
+        url: this.$http.adornUrl(`/seed-platform/tseedcharacteristics/calculateSeed`),
+        method: 'get',
+        params: this.$http.adornParams({seed_temp:this.seed_temp,seed_water:this.seed_water,seed_humidity:this.seed_humidity,mature_size:this.mature_size,seed_light:this.seed_light,
+          mature_production:this.mature_production,seed_ph:this.seed_ph,seed_oil:this.seed_oil,organic_content:this.organic_content,resistence:this.resistence,seedHard:this.seedHard,
+          date_duration:this.date_duration})
+      }).then(({data}) => {
+        this.successRate = data
+      })
     }
   },
   mounted() {
