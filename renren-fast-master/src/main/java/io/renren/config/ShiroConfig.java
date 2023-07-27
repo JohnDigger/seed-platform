@@ -65,6 +65,7 @@ public class ShiroConfig {
         filterMap.put("/seed-platform/plantingdensity/**", "anon");
         filterMap.put("/seed-platform/plantingtime/**", "anon");
         filterMap.put("/seed-platform/seedyield/**", "anon");
+        filterMap.put("/seed-platform/ttitle/getTitle", "anon");
         filterMap.put("/**", "oauth2");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
