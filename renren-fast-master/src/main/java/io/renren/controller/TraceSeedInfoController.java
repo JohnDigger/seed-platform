@@ -1,17 +1,16 @@
 package io.renren.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
+import com.google.zxing.WriterException;
 import io.renren.entity.TraceSeedInfoEntity;
 import io.renren.service.TraceSeedInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.entity.TraceSeedInfoEntity;
 import io.renren.service.TraceSeedInfoService;
@@ -21,7 +20,7 @@ import io.renren.common.utils.R;
 
 
 /**
- * 
+ *
  *
  * @author jiajia
  * @email 541554971@qq.com
@@ -88,5 +87,20 @@ public class TraceSeedInfoController {
 
         return R.ok();
     }
+
+    @PostMapping("/getSeedInfoByCode")
+    public R getSeedInfoByCode(String code) {
+        List<Map<String, String>> seedInfoByCode = traceSeedInfoService.getSeedInfoByCode(code);
+        return R.ok().put("seedInfoByCode", seedInfoByCode);
+    }
+
+    @PostMapping("/updateTraceCode")
+    public R updateTraceCode(String name,String producer) throws IOException, WriterException {
+        System.out.println(name);
+        System.out.println("98"+producer);
+        int traceCodeStates = traceSeedInfoService.updateTraceCode(name, producer);
+        return R.ok().put("traceCodeStates",traceCodeStates);
+    }
+
 
 }

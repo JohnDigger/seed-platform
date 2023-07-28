@@ -3,7 +3,7 @@
     <div class="site-content__wrapper">
       <div class="site-content">
         <div class="brand-info">
-          <h2 class="brand-info__text">阿坝州种子库信息化平台</h2>
+          <h2 class="brand-info__text" id="login-title">阿坝州种子库信息化平台</h2>
 <!--          <p class="brand-info__intro">renren-fast-vue基于vue、element-ui构建开发，实现renren-fast后台管理前端功能，提供一套更优的前端解决方案。</p>-->
         </div>
         <div class="login-main">
@@ -62,6 +62,7 @@
       }
     },
     created () {
+      this.getTitle()
       this.getCaptcha()
     },
     methods: {
@@ -94,6 +95,20 @@
       getCaptcha () {
         this.dataForm.uuid = getUUID()
         this.captchaPath = this.$http.adornUrl(`/captcha.jpg?uuid=${this.dataForm.uuid}`)
+      },
+      //获取标题
+      getTitle(){
+        this.$http({
+          url: 'http://36.133.200.169:8087/renren-fast/seed-platform/ttitle/getTitle',
+          method: 'get'
+        }).then(({data}) => {
+          if (data && data.code === 0) {
+            var longTitle = data.data[0].longTitle
+            document.getElementById("login-title").innerText = longTitle
+          } else {
+            console.log(data.code)
+          }
+        })
       }
     }
   }

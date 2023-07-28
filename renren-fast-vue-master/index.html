@@ -18,6 +18,28 @@
     <script src="./static/plugins/ueditor-1.4.3.3/ueditor.all.min.js"></script>
     <script src="./static/plugins/ueditor-1.4.3.3/lang/zh-cn/zh-cn.js"></script>
   <% } %>
+
+
+  <script>
+    // 创建一个XMLHttpRequest对象
+    var xhr = new XMLHttpRequest();
+
+    // 配置HTTP请求
+    xhr.open('GET', 'http://36.133.200.169:8087/renren-fast/seed-platform/ttitle/getTitle', true);
+
+    // 设置回调函数
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // 处理服务器响应
+        var response = JSON.parse(xhr.responseText);
+        document.title = response.data[0].longTitle
+      }
+    };
+
+    // 发送HTTP请求
+    xhr.send();
+  </script>
+
 </head>
 <body>
   <div id="app"></div>

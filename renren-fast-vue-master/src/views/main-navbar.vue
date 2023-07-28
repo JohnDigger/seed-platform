@@ -2,8 +2,8 @@
   <nav class="site-navbar" :class="'site-navbar--' + navbarLayoutType">
     <div class="site-navbar__header">
       <h1 class="site-navbar__brand" @click="$router.push({ name: 'home' })">
-        <a class="site-navbar__brand-lg" href="javascript:;" style="font-size: 17px">阿坝州种子库信息化平台</a>
-        <a class="site-navbar__brand-mini" href="javascript:;">种子</a>
+        <a class="site-navbar__brand-lg" href="javascript:;" style="font-size: 17px" id="longTitle">阿坝州种子库信息化平台</a>
+        <a class="site-navbar__brand-mini" href="javascript:;" id="shortTitle">种子</a>
       </h1>
     </div>
     <div class="site-navbar__body clearfix">
@@ -63,6 +63,9 @@
     components: {
       UpdatePassword
     },
+    created () {
+      this.getTitle()
+    },
     computed: {
       navbarLayoutType: {
         get () { return this.$store.state.common.navbarLayoutType }
@@ -105,6 +108,23 @@
             }
           })
         }).catch(() => {})
+      },
+      //获取标题
+      getTitle(){
+        this.$http({
+          url: 'http://36.133.200.169:8087/renren-fast/seed-platform/ttitle/getTitle',
+          method: 'get'
+        }).then(({data}) => {
+          if (data && data.code === 0) {
+            console.log(data)
+            var longTitle = data.data[0].longTitle
+            var shortTitle = data.data[0].shortTitle
+            document.getElementById("longTitle").innerText = longTitle
+            document.getElementById("shortTitle").innerText = shortTitle
+          } else {
+            console.log(data.code)
+          }
+        })
       }
     }
   }
