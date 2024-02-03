@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TFilingImageDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TFilingImageEntity" id="tFilingImageMap">
+        <result property="id" column="id"/>
+        <result property="imageId" column="image_id"/>
+        <result property="filingId" column="filing_id"/>
+    </resultMap>
+    <select id="queryByFilingId" parameterType="int" resultType="io.renren.entity.TFilingImageEntity">
+        select * from t_filing_image where filing_id = #{filingId}
+    </select>
+    <update id="updateFilingImage">
+        update t_filing_image set image_id = #{image_id} where id = #{id}
+    </update>
+    <insert id="insertById">
+        insert into t_filing_image(image_id, filing_id) VALUES (#{image_id},#{filing_id})
+    </insert>
+
+</mapper>

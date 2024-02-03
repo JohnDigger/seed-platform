@@ -12,14 +12,15 @@ import { isAuth } from '@/utils'
 import cloneDeep from 'lodash/cloneDeep'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+import Viewer from 'v-viewer'
+import 'viewerjs/dist/viewer.css'
 // import * as echarts from 'echarts'
 // import 'echarts/lib/chart/line'
 // Vue.prototype.$echarts = echarts
 Vue.use(VueCookie)
 Vue.use(ElementUI)
 Vue.config.productionTip = false
-
+Vue.use(Viewer)
 // 非生产环境, 适配mlogiockjs模拟数据                 // api: https://github.com/nuysoft/Mock
 if (process.env.NODE_ENV !== 'production') {
   require('@/mock')

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.renren.dao.TFilingSeedDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="io.renren.entity.TFilingSeedEntity" id="tFilingSeedMap">
+        <result property="id" column="id"/>
+        <result property="filingSeedName" column="filing_seed_name"/>
+        <result property="filingSeedOrigin" column="filing_seed_origin"/>
+        <result property="filingSeedProducer" column="filing_seed_producer"/>
+        <result property="filingSeedSeller" column="filing_seed_seller"/>
+        <result property="filingSeedTime" column="filing_seed_time"/>
+        <result property="filingSeedPrice" column="filing_seed_price"/>
+        <result property="filingSeedWeight" column="filing_seed_weight"/>
+    </resultMap>
+
+    <resultMap id="getAll" type="io.renren.entity.TFilingSeedEntity" extends="tFilingSeedMap">
+        <collection property="TImags" ofType="io.renren.entity.TImageEntity">
+            <id column="img_id"  property="id" />
+            <result column="image_url" property="imageUrl" />
+        </collection>
+    </resultMap>
+    <select id="getWithImg" resultMap="getAll" parameterType="int">
+        SELECT
+            t_filing_seed.*,
+            t_image.image_url
+        FROM
+            t_filing_seed
+                LEFT JOIN t_filing_image on t_filing_seed.id = t_filing_image.filing_id
+                LEFT JOIN t_image on t_filing_image.image_id = t_image.id
+        LIMIT #{page_cur},#{page_capacity}
+    </select>
+
+    <select id="getById" resultMap="getAll" parameterType="integer">
+        SELECT
+            t_filing_seed.*,
+            t_image.image_url
+        FROM
+            t_filing_seed
+                LEFT JOIN t_filing_image on t_filing_seed.id = t_filing_image.filing_id
+                LEFT JOIN t_image on t_filing_image.image_id = t_image.id
+        where t_filing_seed.id = #{id}
+    </select>
+</mapper>

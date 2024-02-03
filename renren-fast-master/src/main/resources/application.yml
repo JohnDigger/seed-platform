@@ -6,8 +6,8 @@ server:
       max: 1000
       min-spare: 30
     connection-timeout: 5000ms
-#  port: 8080
-  port: 8087
+  port: 8080
+#  port: 8087
   servlet:
     context-path: /renren-fast
 
@@ -80,3 +80,7 @@ renren:
     header: token
 tracecode:
   path: "D:/dev/IntelliJ IDEA Educational Edition 2020.1.2/code/"
+file:
+  uploadFolder: "C:/file/"
+  imageStaticAccessPath: "/image/"  #回显路径
+  videoStaticAccessPath: "/video/"
